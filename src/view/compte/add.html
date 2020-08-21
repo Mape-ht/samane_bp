@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout Compte</title>
+    <link rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container col-md-8 col-md-offset-2" style="margin-top: 40px;">
+        {if isset($ok) && $ok == 0}
+        <div class="alert alert-danger">Echec de l'ajout du Compte</div>
+        {/if}
+        <div class="panel panel-primary">
+            <div class="panel-heading">Ajout Compte</div>
+            <div class="panel-body">
+                <form action="{$url_base}compte/add" method="post">
+                    <div class="form-group">
+                        <label class="control-label">Type de compte</label>
+                        <input type="text" class="form-control" name="typecompte">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Numero</label>
+                        <input type="text" class="form-control" name="numero">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Cle Rib</label>
+                        <input type="text" class="form-control" name="cleRib">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Solde</label>
+                        <input type="text" class="form-control" name="solde">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Date Ouverture</label>
+                        <input type="date" class="form-control" name="dateOuverture">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Frais Bancaire</label>
+                        <input type="text" class="form-control" name="typefrais">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" name="ajouter" value="Ajouter">
+                        <input type="reset" class="btn btn-danger" name="annuler" value="Annuler">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container col-md-10 col-md-offset-1" style="margin-top: 40px;">
+        {if isset($ok) && $ok == 1}
+        <div class="alert alert-success">Listing du Compte reussi</div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Liste des Comptes</div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Numero</th>
+                            <th>Cle Rib</th>
+                            <th>Solde</th>
+                            <th>Date Ouverture</th>
+                            <th>Frais Bancaire</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach from=$comptes item=$compte}
+                        <tr>
+                            <td>{$compte->getId()}</td>
+                            <td>{$compte->getNumero()}</td>
+                            <td>{$compte->getCleRib()}</td>
+                            <td>{$compte->getSolde()}</td>
+                            <td>{$compte->getDateOuverture()}</td>
+                            <td>{$compte->getTypefrais()}</td>
+                            <td>{$compte->getTypeCompte()}</td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {/if}
+    </div>
+
+</body>
+
+</html>

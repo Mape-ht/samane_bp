@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout ClientPhysique</title>
+    <link rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container col-md-8 col-md-offset-2" style="margin-top: 40px;">
+        {if isset($ok) && $ok == 0}
+        <div class="alert alert-danger">Echec de l'ajout du Client</div>
+        {/if}
+        <div class="panel panel-primary">
+            <div class="panel-heading">Ajout Client Physique</div>
+            <div class="panel-body">
+                <form action="{$url_base}clientPhysique/add" method="post">
+                    <div class="form-group">
+                        <label class="control-label">Nom</label>
+                        <input type="text" class="form-control" name="nom">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Prenom</label>
+                        <input type="text" class="form-control" name="prenom">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Adresse</label>
+                        <input type="text" class="form-control" name="adresse">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Telephone</label>
+                        <input type="text" class="form-control" name="telephone">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Statut</label>
+                        <input type="text" class="form-control" name="statut">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Salaire</label>
+                        <input type="text" class="form-control" name="salaire">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" name="ajouter" value="Ajouter">
+                        <input type="reset" class="btn btn-danger" name="annuler" value="Annuler">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container col-md-10 col-md-offset-1" style="margin-top: 40px;">
+        {if isset($ok) && $ok == 1}
+        <div class="alert alert-success">Listing du Client Physique reussi</div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Liste des Client Physique</div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Adresse</th>
+                            <th>Telephone</th>
+                            <th>Statut</th>
+                            <th>Salaire</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach from=$clientPhysiques item=$clientPhysique}
+                        <tr>
+                            <td>{$clientPhysique->getId()}</td>
+                            <td>{$clientPhysique->getNom()}</td>
+                            <td>{$clientPhysique->getPrenom()}</td>
+                            <td>{$clientPhysique->getAdresse()}</td>
+                            <td>{$clientPhysique->getTelephone()}</td>
+                            <td>{$clientPhysique->getStatut()}</td>
+                            <td>{$clientPhysique->getSalaire()}</td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {/if}
+    </div>
+
+</body>
+
+</html>

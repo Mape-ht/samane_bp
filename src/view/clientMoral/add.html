@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout des Client Moral</title>
+    <link rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container col-md-8 col-md-offset-2" style="margin-top: 40px;">
+        {if isset($ok) && $ok == 0}
+        <div class="alert alert-danger">Echec de l'ajout du Client</div>
+        {/if}
+        <div class="panel panel-primary">
+            <div class="panel-heading">Ajout Client Moral</div>
+            <div class="panel-body">
+                <form action="{$url_base}clientMoral/add" method="post">
+                    <div class="form-group">
+                        <label class="control-label">Raison Social</label>
+                        <input type="text" class="form-control" name="raisonSocial">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Nom</label>
+                        <input type="text" class="form-control" name="nom">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Telephone</label>
+                        <input type="text" class="form-control" name="telephone">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Adresse</label>
+                        <input type="text" class="form-control" name="adresse">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" name="ajouter" value="Ajouter">
+                        <input type="reset" class="btn btn-danger" name="annuler" value="Annuler">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container col-md-10 col-md-offset-1" style="margin-top: 40px;">
+        {if isset($ok) && $ok == 1}
+        <div class="alert alert-success">Listing du ClientMoral reussi</div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Liste des Client Moral</div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Raison Social</th>
+                            <th>Nom</th>
+                            <th>Adresse</th>
+                            <th>Telephone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach from=$clientMorals item=$clientMoral}
+                        <tr>
+                            <td>{$clientMoral->getId()}</td>
+                            <td>{$clientMoral->getRaisonSocial()}</td>
+                            <td>{$clientMoral->getNom()}</td>
+                            <td>{$clientMoral->getAdresse()}</td>
+                            <td>{$clientMoral->getTelephone()}</td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {/if}
+    </div>
+
+</body>
+
+</html>
+
+</html>
