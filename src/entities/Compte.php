@@ -20,6 +20,8 @@ class Compte
     private $dateOuverture;
     /** @Column(type="string") **/
     private $typefrais;
+     /** @Column(type="string") **/
+     private $typeCompte;
     /**
      * @ManyToOne(targetEntity="ClientMoral", inversedBy="comptes")
      * @JoinColumn(name="clientMoral_id", referencedColumnName="id")
@@ -30,11 +32,7 @@ class Compte
      * @JoinColumn(name="clientPhysique_id", referencedColumnName="id")
      */
     private $clientPhysique;
-    /**
-     * @ManyToOne(targetEntity="TypeCompte", inversedBy="comptes")
-     * @JoinColumn(name="typeCompte_id", referencedColumnName="id")
-     */
-    private $typeCompte;
+   
 
     /**
      * Get the value of id

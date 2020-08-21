@@ -20,12 +20,14 @@ class CompteController extends Controller{
             extract($_POST);
             $compte = new Compte();
 
+            $compte->setTypeCompte($typeCompte);
             $compte->setNumero($numero);
             $compte->setCleRib($cleRib);
             $compte->setSolde($solde);
             $compte->setDateOuverture($dateOuverture);
             $compte->setTypefrais($typefrais);
-            $compte->setTypeCompte($typeCompte);
+            
+           
             
             
             $compteRepository = new CompteRepository();
